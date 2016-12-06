@@ -2,18 +2,22 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body ng-app="MyApp" layout="column">
+<body ng-app="MyApp" layout="column" ng-controller="UserController as userCtrl">
 
-  <md-toolbar>
-    <h1>Angular Material Starter</h1>
+  <md-toolbar layout="row">
+    <md-button class="menu" ng-click="userCtrl.toggleList()" aria-label="Show User List" hide-gt-sm>
+      <i class="fa fa-bars fa-lg"></i>
+    </md-button>
+    <h3>Angular Material Starter</h3>
   </md-toolbar>
 
-  <div class="container" layout="row" ng-controller="UserController as userCtrl" flex>
+  <div class="container" layout="row" flex>
 
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-      <md-list>
+    <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
+      <md-list ng-click="userCtrl.toggleList()">
         <md-list-item ng-repeat="user in userCtrl.users">
           <md-button ng-click="userCtrl.selectUser(user)" ng-class="{'selected' : user == userCtrl.selected}">
             <md-icon md-svg-src="{{user.avatar}}" class="avatar"></md-icon>
@@ -27,6 +31,11 @@
       <md-icon md-svg-src="{{userCtrl.selected.avatar}}" class="avatar"></md-icon>
       <h2>{{userCtrl.selected.name}}</h2>
       <p>{{userCtrl.selected.content}}</p>
+
+      <md-button class="share" aria-label="Share" ng-click="userCtrl.share()">
+        <i class="fa fa-share fa-lg"></i>
+      </md-button>
+
     </md-content>
 
   </div>
