@@ -1,7 +1,14 @@
 <md-bottom-sheet class="md-grid">
-  <md-subheader>Share</md-subheader>
-      <md-button ng-repeat="item in items" class="md-grid-item-content"
-      ng-class="item.class" ng-click="listItemClick($index)" style="padding: 10px;">
-        <i class="fa fa-4x" ng-class="item.icon"></i>
+  <md-subheader>
+    Contact: <span class="name">{{bottomCtrl.user.name}}</span>
+  </md-subheader>
+
+  <md-list>
+    <md-item ng-repeat="item in bottomCtrl.items">
+      <md-button ng-click="bottomCtrl.performAction()" ng-href="{{item.url}}">
+        <i class="fa fa-lg fa-{{item.icon}}"></i>
+        {{item.name}}
       </md-button>
+    </md-item>
+  </md-list>
 </md-bottom-sheet>

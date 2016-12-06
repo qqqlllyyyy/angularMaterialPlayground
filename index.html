@@ -32,7 +32,7 @@
       <h2>{{userCtrl.selected.name}}</h2>
       <p>{{userCtrl.selected.content}}</p>
 
-      <md-button class="share" aria-label="Share" ng-click="userCtrl.share()">
+      <md-button class="share" aria-label="Share" ng-click="userCtrl.share(userCtrl.selected)">
         <i class="fa fa-share fa-lg"></i>
       </md-button>
 
