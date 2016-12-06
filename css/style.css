@@ -17,6 +17,9 @@ md-list-item > button {
   width:100%;
   text-align:left !important;
 }
+.md-button.selected {
+  background-color: #CCC;
+}
 
 #content  {
   padding-left: 40px;
@@ -38,15 +41,4 @@ md-list-item > button {
   transform: translateZ(0);
   -webkit-transform: scale(0.70);
   -moz-transform:scale(0.70);
-}
-
-
-.red {
-  background-color: red;
-}
-.lightblue {
-  background-color: lightblue;
-}
-.lightgreen {
-  background-color: lightgreen;
 }

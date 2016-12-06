@@ -10,16 +10,27 @@
     <h1>Angular Material Starter</h1>
   </md-toolbar>
 
-  <div class="container" layout="row" flex>
+  <div class="container" layout="row" ng-controller="UserController as userCtrl" flex>
+
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-      <md-list></md-list>
+      <md-list>
+        <md-list-item ng-repeat="user in userCtrl.users">
+          <md-button ng-click="userCtrl.selectUser(user)" ng-class="{'selected' : user == userCtrl.selected}">
+            <md-icon md-svg-src="{{user.avatar}}" class="avatar"></md-icon>
+            {{user.name}}
+          </md-button>
+        </md-list-item>
+      </md-list>
     </md-sidenav>
+
     <md-content id="content" flex>
-      <h1>Content</h1>
+      <md-icon md-svg-src="{{userCtrl.selected.avatar}}" class="avatar"></md-icon>
+      <h2>{{userCtrl.selected.name}}</h2>
+      <p>{{userCtrl.selected.content}}</p>
     </md-content>
+
   </div>
 
-  ng-controller>.ng-toolbar
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular.min.js"></script>
@@ -28,6 +39,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.js"></script>
 
 <script src="script/app.js"></script>
+
+<script src="script/modules/users.js"></script>
+<script src="script/services/userService.js"></script>
+<script src="script/controllers/userController.js"></script>
 
 </body>
 </html>
